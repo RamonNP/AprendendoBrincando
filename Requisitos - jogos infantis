@@ -1,0 +1,34 @@
+0)Menu por idade. 
+
+Categoria Idade
+	1-3
+		Sons(Animais)
+		Formas Geometricas
+	4~~5
+		LETRAS
+	6~~7
+		SILABAS
+	8~~9
+		fdsfsdfsd
+	10
+
+
+SONS) Son de animais.
+	AUDIO - "que animal é esse?"
+	3 figuras de animais.
+	Play tocar som do animal. 
+	quadrado para colocar animal
+	
+Formas Geometricas
+	AUDIO - "Ordene as Figuras"
+	3 figuras.
+	3 Lugares.
+	Quando arrastar AUDIO "objeto". 
+
+LETRAS)Completar palavras com consoantes.
+	AUDIO - "Complete a palavra com B"
+	Palavra faltando letras.
+	Objeto da palavra na cena, quando clicar no objeto falar a palavra. 
+	Quando completar repetir palavra.
+	
+	

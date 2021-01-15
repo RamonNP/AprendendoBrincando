@@ -1,0 +1,9 @@
+lastUpgrade=01009
+proj.pluginVersion=0.10.09
+proj.AppId=322034457441
+and.BundleId=com.rajd.apps.puzzle
+proj.classDir=Assets
+proj.ConstantsClassName=GooglePlayServiceConquistas
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--%0d%0aGoogle+Play+game+services+IDs.%0d%0aSave+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.%0d%0a--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--+app_id+--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e322034457441%3c%2fstring%3e%0d%0a++%3c%21--+package_name+--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3ecom.rajd.apps.puzzle%3c%2fstring%3e%0d%0a++%3c%21--+achievement+Uma+linda+historia.+--%3e%0d%0a++%3cstring+name%3d%22achievement_uma_linda_historia.%22+translatable%3d%22false%22%3eCgkI4bb_1a8JEAIQAQ%3c%2fstring%3e%0d%0a++%3c%21--+achievement+Alcance++100+Pontos.+--%3e%0d%0a++%3cstring+name%3d%22achievement_alcance__100_pontos.%22+translatable%3d%22false%22%3eCgkI4bb_1a8JEAIQAg%3c%2fstring%3e%0d%0a++%3c%21--+achievement+Alcance+10+Pontos+--%3e%0d%0a++%3cstring+name%3d%22achievement_alcance_10_pontos%22+translatable%3d%22false%22%3eCgkI4bb_1a8JEAIQBA%3c%2fstring%3e%0d%0a++%3c%21--+achievement+Alcance++1000+Pontos+--%3e%0d%0a++%3cstring+name%3d%22achievement_alcance__1000_pontos%22+translatable%3d%22false%22%3eCgkI4bb_1a8JEAIQBQ%3c%2fstring%3e%0d%0a++%3c%21--+leaderboard+Ranking+Principal+--%3e%0d%0a++%3cstring+name%3d%22leaderboard_ranking_principal%22+translatable%3d%22false%22%3eCgkI4bb_1a8JEAIQAw%3c%2fstring%3e%0d%0a%3c%2fresources%3e%0d%0a
+and.ClientId=322034457441-cj9c1c6aif20qe5ht24dud8k2qggsu9v.apps.googleusercontent.com
+android.SetupDone=true

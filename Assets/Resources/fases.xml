@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<palavras>
+		<palavra name="palavra1">
+			<ordem>1</ordem>
+			<nome>CASA</nome>
+			<pontos>2</pontos>
+			<dificuldade>Facil</dificuldade>
+			<vertical>S</vertical>
+			<inicio>-4</inicio>
+			<pular>
+				<casa>1</casa>
+				<casa>-1</casa>
+				<casa>-3</casa>
+			</pular>
+			<letra>
+				<value>C</value>
+				<value>A</value>
+				<value>S</value>
+				<value>A</value>
+				<value>O</value>
+			</letra>
+		</palavra>
+		<palavra name="palavra2">
+			<ordem>-3</ordem>
+			<nome>CASO</nome>
+			<pontos>-5</pontos>
+			<dificuldade>Facil</dificuldade>
+			<vertical>N</vertical>
+			<inicio>1</inicio>
+			<pular>
+				<casa></casa>
+			</pular>
+		</palavra>
+		<palavra name="palavra3">
+			<ordem>-3</ordem>
+			<nome>SACO</nome>
+			<pontos>-5</pontos>
+			<dificuldade>Facil</dificuldade>
+			<vertical>N</vertical>
+			<inicio>-1</inicio>
+			<pular>
+				<casa></casa>
+			</pular>
+		</palavra>
+		<palavra name="palavra4">
+			<ordem>-3</ordem>
+			<nome>ASAS</nome>
+			<pontos>-5</pontos>
+			<dificuldade>Facil</dificuldade>
+			<vertical>N</vertical>
+			<inicio>-3</inicio>
+			<pular>
+				<casa></casa>
+			</pular>
+		</palavra>
+	</palavras>

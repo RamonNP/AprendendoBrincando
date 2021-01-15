@@ -1,0 +1,80 @@
+fileFormatVersion: 2
+guid: 9f213fd4e83a7524f99662792c5dd9fe
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioFase1: {instanceID: 0}
+  - audioFase2: {instanceID: 0}
+  - audioFase3: {instanceID: 0}
+  - audioFase4: {instanceID: 0}
+  - audioFase5: {instanceID: 0}
+  - audioA: {instanceID: 0}
+  - audioB: {instanceID: 0}
+  - audioC: {instanceID: 0}
+  - audioD: {instanceID: 0}
+  - audioE: {instanceID: 0}
+  - audioF: {instanceID: 0}
+  - audioG: {instanceID: 0}
+  - audioH: {instanceID: 0}
+  - audioI: {instanceID: 0}
+  - audioJ: {instanceID: 0}
+  - audioK: {instanceID: 0}
+  - audioL: {instanceID: 0}
+  - audioM: {instanceID: 0}
+  - audioN: {instanceID: 0}
+  - audioO: {instanceID: 0}
+  - audioP: {instanceID: 0}
+  - audioQ: {instanceID: 0}
+  - audioR: {instanceID: 0}
+  - audioS: {instanceID: 0}
+  - audioT: {instanceID: 0}
+  - audioU: {instanceID: 0}
+  - audioV: {instanceID: 0}
+  - audioX: {instanceID: 0}
+  - audioY: {instanceID: 0}
+  - audioZ: {instanceID: 0}
+  - audioW: {instanceID: 0}
+  - cachorro: {fileID: 21300000, guid: 9be3384dfa8117e499573a7131357485, type: 3}
+  - girafa: {fileID: 21300000, guid: d6a722cf1a839164caed3ecdb10fddcc, type: 3}
+  - gato: {fileID: 21300000, guid: 29624b9415d62ad4fb38745aa6bd7e80, type: 3}
+  - galo: {fileID: 21300000, guid: 7238559d4fb28c24791a677a9ca575e3, type: 3}
+  - letraF: {instanceID: 0}
+  - letraG: {instanceID: 0}
+  - letraH: {instanceID: 0}
+  - letraI: {instanceID: 0}
+  - letraJ: {instanceID: 0}
+  - letraK: {instanceID: 0}
+  - letraL: {instanceID: 0}
+  - letraM: {instanceID: 0}
+  - letraN: {instanceID: 0}
+  - letraO: {instanceID: 0}
+  - letraP: {instanceID: 0}
+  - letraQ: {instanceID: 0}
+  - letraR: {instanceID: 0}
+  - letraS: {instanceID: 0}
+  - letraT: {instanceID: 0}
+  - letraU: {instanceID: 0}
+  - letraV: {instanceID: 0}
+  - letraX: {instanceID: 0}
+  - letraW: {instanceID: 0}
+  - letraY: {instanceID: 0}
+  - letraZ: {instanceID: 0}
+  - ok1: {instanceID: 0}
+  - ok2: {instanceID: 0}
+  - ok3: {instanceID: 0}
+  - ok4: {instanceID: 0}
+  - ok5: {instanceID: 0}
+  - ok6: {instanceID: 0}
+  - fundo1: {instanceID: 0}
+  - fundo2: {instanceID: 0}
+  - fundo3: {instanceID: 0}
+  - fundo4: {instanceID: 0}
+  - fundo5: {instanceID: 0}
+  - fundo6: {instanceID: 0}
+  - hudGameOver: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

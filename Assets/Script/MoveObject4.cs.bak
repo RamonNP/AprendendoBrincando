@@ -1,0 +1,226 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MoveObject4 : MonoBehaviour
+{
+    public AudioClip fxLetra;
+    [SerializeField]
+    private Transform place;
+    [SerializeField]
+    private Transform place2;
+    private Vector2 initialPosition;
+
+    private GameController gameController;
+    private float deltaX, deltaY;
+
+    public bool locked;
+
+
+    //efeito quando arrasta pega aumenta.
+    float x;
+    float y;
+    float z;
+    float xN;
+    float yN;
+
+
+    void Start()
+    {
+        gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        initialPosition = transform.position;
+        x = transform.localScale.x;
+        y = transform.localScale.y;
+        z = transform.localScale.z;
+
+        xN = x * 1.3f;
+        yN = y * 1.3f;
+
+
+    }
+
+
+    void Update()
+    {
+        //if (Input.touchCount > 0 && !locked) //SEM SIMULADOR
+        if (!locked)
+        {
+            
+            if (transform.position.x != initialPosition.x && initialPosition.y != transform.position.y)
+            {
+                transform.localScale = new Vector3(xN, yN, z);
+            } else
+            {
+                transform.localScale = new Vector3(x, y, z);
+            }
+            //Touch touch = Input.GetTouch(0);//simulatess();//Input.GetTouch(0); SEM SIMULADOR
+            Touch touch = simulatess();//Input.GetTouch(0); SEM SIMULADOR
+
+            Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
+                    {
+                        //Debug.Log(slider);
+                        deltaX = touchPos.x - transform.position.x;
+                        deltaY = touchPos.y - transform.position.y;
+                    }
+                    break;
+
+                case TouchPhase.Moved:
+
+                    if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
+                    {
+                        if (gameController.lockKK == 0)
+                        {
+                            gameController.lockKK = 4;
+                        } else if (gameController.lockKK == 4)
+                        {
+                            transform.position = new Vector3(touchPos.x - deltaX, touchPos.y - deltaY, 15);
+                            this.GetComponent<SpriteRenderer>().sortingOrder = 7;
+                        } else
+                        {
+                            gameController.resizeColiderMin(this.GetComponent<BoxCollider2D>());
+                        }
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                    if (place!= null && (Mathf.Abs(transform.position.x - place.position.x) <= 1.0f &&
+                       Mathf.Abs(transform.position.y - place.position.y) <= 1.0f))
+                    {
+                        transform.position = new Vector3(place.position.x, place.position.y, 1);
+                        locked = true;
+                        transform.localScale = new Vector3(x, y, z);
+                        gameController.addRight();
+                        gameController.playFx(fxLetra);
+                        place = null;
+                    } else if (place2 != null && (Mathf.Abs(transform.position.x - place2.position.x) <= 1.0f &&
+                       Mathf.Abs(transform.position.y - place2.position.y) <= 1.0f))
+                    {
+                        transform.position = new Vector3(place2.position.x, place2.position.y, 1);
+                        locked = true;
+                        transform.localScale = new Vector3(x, y, z);
+                        Debug.Log("ADDDDDDDDDDDDDD RIGHT");
+                        gameController.addRight();
+                        gameController.playFx(fxLetra);
+                        place2 = null;
+                    }
+                    else
+                    {
+                        if(initialPosition.x != transform.position.x)
+                        {
+                        transform.position = new Vector2(initialPosition.x, initialPosition.y);
+                            
+                            gameController.addError();
+                        }
+                    }
+                    gameController.lockKK = 0;
+                    gameController.resizeColiderMax(this.GetComponent<BoxCollider2D>(), this.GetComponent<SpriteRenderer>());
+                    break;
+
+            }
+        }
+    }
+    private Touch simulatess()
+    {
+        Touch touch = new Touch();
+        if (Input.GetMouseButtonDown(0))
+        {
+            touch = new Touch();
+            touch.phase = TouchPhase.Began;
+            touch.position = Input.mousePosition;
+        }
+        if (Input.GetMouseButton(0))
+        {
+            touch = new Touch();
+            touch.phase = TouchPhase.Moved;
+            touch.position = Input.mousePosition;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            touch = new Touch();
+            touch.phase = TouchPhase.Ended;
+            touch.position = Input.mousePosition;
+        }
+        return touch;
+    }
+    //MOVIMENTO INICIAL EMBARALHAR
+    public float xDest;
+    private float yDest;
+    public void moveInitial()
+    {
+
+        //xDest = -2.5f;
+        yDest = -2f;
+
+        coroutine = waithMoveEnum();
+        StartCoroutine("waithMoveEnum");
+    }
+
+
+    IEnumerator waithMoveEnum()
+    {
+        float xInit = transform.position.x;
+        float yInit = transform.position.y;
+        float xcurrent = transform.position.x;
+        float ycurrent = transform.position.y;
+
+
+        yield return new WaitForSecondsRealtime(1.5f);
+        if (ycurrent > yDest)
+        {
+
+            while (ycurrent >= yDest)
+            {
+                ycurrent = ycurrent - 0.1f;
+                yield return new WaitForSecondsRealtime(0.01f);
+                transform.position = new Vector2(xcurrent, ycurrent);
+            }
+        }
+        else if (ycurrent < yDest)
+        {
+
+            while (ycurrent <= yDest)
+            {
+                ycurrent = ycurrent + 0.1f;
+                yield return new WaitForSecondsRealtime(0.01f);
+                transform.position = new Vector2(xcurrent, ycurrent);
+            }
+        }
+        yield return new WaitForSecondsRealtime(1f);
+        //float teste = initialPosition.x;
+        if (xcurrent > xDest)
+        {
+            while (xcurrent >= xDest)
+            {
+                xcurrent = xcurrent - 0.1f;
+                yield return new WaitForSecondsRealtime(0.01f);
+                transform.position = new Vector2(xcurrent, ycurrent);
+            }
+
+        }
+        else if (xcurrent < xDest)
+        {
+            while (xcurrent <= xDest)
+            {
+                xcurrent = xcurrent + 0.1f;
+                yield return new WaitForSecondsRealtime(0.01f);
+                transform.position = new Vector2(xcurrent, ycurrent);
+            }
+
+        }
+
+
+        initialPosition = transform.position;
+        x = transform.localScale.x;
+        y = transform.localScale.y;
+        z = transform.localScale.z;
+
+        xN = x * 1.3f;
+        yN = y * 1.3f;
+        locked = false;
+    }
+    //FIM EMBARALHAR
+}
