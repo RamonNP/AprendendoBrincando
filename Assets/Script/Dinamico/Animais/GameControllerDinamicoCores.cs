@@ -121,7 +121,8 @@ public class GameControllerDinamicoCores : GameControllerBase
         montarPalavra();
         atualizarPontos(false);
         //AdmobManager.instance.RequestBanner();
-        RewardedAdsScript.getInstance().ShowBanner();
+        //RewardedAdsScript.getInstance().ShowBanner();
+        AdmobManager.instance.RequestBanner();
     }
 
     // Update is called once per frame
@@ -247,7 +248,8 @@ public class GameControllerDinamicoCores : GameControllerBase
         playPalavra();
         hudGameOver.SetActive(false);
         StartCoroutine("waith");
-        RewardedAdsScript.getInstance().RegraInterstitial();
+        //RewardedAdsScript.getInstance().RegraInterstitial();
+        AdmobManager.instance.ShowInterstitial();
     }
     IEnumerator waith()
     {

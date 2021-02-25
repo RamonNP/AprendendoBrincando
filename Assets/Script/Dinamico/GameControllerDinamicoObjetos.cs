@@ -89,7 +89,8 @@ public class GameControllerDinamicoObjetos : GameControllerBase
         montarPalavra();
         montarObjeto();
         //AdmobManager.instance.RequestBanner();
-        RewardedAdsScript.getInstance().ShowBanner();
+        //RewardedAdsScript.getInstance().ShowBanner();
+        AdmobManager.instance.RequestBanner();
         atualizarPontos(false);
     }
     public void posicaoAleatoria(int posicaoAnimais)
@@ -143,7 +144,8 @@ public class GameControllerDinamicoObjetos : GameControllerBase
         hudGameOver.SetActive(false);
         montarObjeto();
         StartCoroutine("waith");
-        RewardedAdsScript.getInstance().RegraInterstitial();
+        //RewardedAdsScript.getInstance().RegraInterstitial();
+        AdmobManager.instance.ShowInterstitial();
     }
     IEnumerator waith()
     {

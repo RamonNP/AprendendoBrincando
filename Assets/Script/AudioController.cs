@@ -190,7 +190,8 @@ public class AudioController : MonoBehaviour
 
     public void MenuFaseSelect()
     {
-        RewardedAdsScript.getInstance().RegraInterstitial();
+        //RewardedAdsScript.getInstance().RegraInterstitial();
+        AdmobManager.instance.ShowInterstitial();
         SceneManager.LoadScene("MenuPrincipal");
     }
 

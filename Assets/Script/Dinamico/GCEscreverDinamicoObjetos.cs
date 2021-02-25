@@ -91,8 +91,8 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
 
     void Start()
     {
-        //AdmobManager.instance.RequestBanner();
-        RewardedAdsScript.getInstance().ShowBanner();
+        AdmobManager.instance.RequestBanner();
+        //RewardedAdsScript.getInstance().ShowBanner();
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
         audioController.fxFrase = audioItem[faseAtual];
         palavra = palavras[faseAtual];
@@ -135,7 +135,8 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         hudGameOver.SetActive(false);
         obj3.GetComponent<SpriteRenderer>().sprite = spriteItem[faseAtual];
         StartCoroutine("waith");
-        RewardedAdsScript.getInstance().RegraInterstitial();
+        //RewardedAdsScript.getInstance().RegraInterstitial();
+        AdmobManager.instance.ShowInterstitial();
     }
     IEnumerator waith()
     {

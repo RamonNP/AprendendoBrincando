@@ -1198,10 +1198,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1114731682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55b0f412207ea4949a5c4c2f341cff36, type: 3}
+  m_Script: {fileID: 11500000, guid: 318bc2a5ace9ff5468ff40b9a5046c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deaths: 0
+  qtdMorte: 0
 --- !u!4 &1114731684
 Transform:
   m_ObjectHideFlags: 0
