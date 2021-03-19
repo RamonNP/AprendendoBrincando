@@ -73,7 +73,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
     private AudioController audioController;
     private IEnumerator coroutine;
     // Start is called before the first frame update
-    public static int faseAtual;
+    public int faseAtual;
     public int right;
     public int error;
     public int pontos;
@@ -88,9 +88,13 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
     public MODinamicoEscrever m4;
     public MODinamicoEscrever m5;
     public MODinamicoEscrever m6;
+    public string menuFaseAtual;
 
     void Start()
     {
+        //Variavel que armazena o valor que esta a fase exemplo Ler_dinamico_Frutas
+        menuFaseAtual = BancoPlayerprefs.instance.LerInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL);;
+        faseAtual = BancoPlayerprefs.instance.LerInformacoesInt(BancoPlayerprefs.FASE_ATUAL);
         AdmobManager.instance.RequestBanner();
         //RewardedAdsScript.getInstance().ShowBanner();
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
@@ -137,6 +141,8 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         StartCoroutine("waith");
         //RewardedAdsScript.getInstance().RegraInterstitial();
         AdmobManager.instance.ShowInterstitial();
+        BancoPlayerprefs.instance.GravarInformacoesInt(menuFaseAtual+faseAtual,1);
+        BancoPlayerprefs.instance.GravarInformacoesInt(BancoPlayerprefs.FASE_ATUAL,faseAtual);
     }
     IEnumerator waith()
     {

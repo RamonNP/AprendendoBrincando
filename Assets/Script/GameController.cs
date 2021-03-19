@@ -86,7 +86,7 @@ public class GameController : GameControllerBase
     public void Menu()
     {
         
-        audioController.changeMusic(audioController.fxPalavra, "Menu2", true, slider);
+        //audioController.changeMusic(audioController.fxPalavra, "Menu2", true, slider);
         SceneManager.LoadScene("MenuPrincipal");
     }
     public void Next()
@@ -127,7 +127,7 @@ public class GameController : GameControllerBase
     IEnumerator playVictoryEnum()
     {
         yield return new WaitForSecondsRealtime(1f);
-        audioController.playFx(audioController.fxPalavra, 1);
+        //audioController.playFx(audioController.fxPalavra, 1);
         yield return new WaitForSecondsRealtime(0.5f);
         audioController.playFx(audioController.fxVictory, 1);
 

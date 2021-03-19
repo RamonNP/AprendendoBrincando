@@ -100,8 +100,12 @@ public class GameControllerDinamicoCores : GameControllerBase
     public int error;
     public int pontos;
     public GameObject hudGameOver;
+    public string menuFaseAtual;
     void Start()
     {
+        //Variavel que armazena o valor que esta a fase exemplo Ler_dinamico_Frutas
+        menuFaseAtual = BancoPlayerprefs.instance.LerInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL);;
+        faseAtual = BancoPlayerprefs.instance.LerInformacoesInt(BancoPlayerprefs.FASE_ATUAL);
         posicaoAleatoria(new Random().Next(0, 3));
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
         if(faseAtual == 0)
@@ -250,6 +254,8 @@ public class GameControllerDinamicoCores : GameControllerBase
         StartCoroutine("waith");
         //RewardedAdsScript.getInstance().RegraInterstitial();
         AdmobManager.instance.ShowInterstitial();
+        BancoPlayerprefs.instance.GravarInformacoesInt(menuFaseAtual+faseAtual,1);
+        BancoPlayerprefs.instance.GravarInformacoesInt(BancoPlayerprefs.FASE_ATUAL,faseAtual);
     }
     IEnumerator waith()
     {

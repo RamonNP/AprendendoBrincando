@@ -25,7 +25,8 @@ public class MenuFaseSelect : MonoBehaviour
     public GameObject sonsAnimaisDinamico;
     public GameObject coresDinamico;
     public GameObject outrosDinamico;
-    public GameObject meninaDoLeite;
+    public GameObject LeopardoJaboti;
+    public GameObject VisitaDaVovo;
     public GameObject cruzadinha;
 
 
@@ -44,10 +45,12 @@ public class MenuFaseSelect : MonoBehaviour
 
                 animalEscrever.SetActive(false);
                 abjetosEscrever.SetActive(false);
-                meninaDoLeite.SetActive(false);
+                LeopardoJaboti.SetActive(false);
+                VisitaDaVovo.SetActive(false);
             } else if (cat.Equals(CATEGORIA.HISTORIAS))
             {
-                meninaDoLeite.SetActive(true);
+                LeopardoJaboti.SetActive(true);
+                VisitaDaVovo.SetActive(true);
 
                 sonsAnimaisDinamico.SetActive(false);
                 coresDinamico.SetActive(false);
@@ -57,7 +60,8 @@ public class MenuFaseSelect : MonoBehaviour
             } else if (cat.Equals(CATEGORIA.CRUZADINHA))
             {
                 cruzadinha.SetActive(true);
-                meninaDoLeite.SetActive(false);
+                LeopardoJaboti.SetActive(false);
+                VisitaDaVovo.SetActive(false);
 
                 sonsAnimaisDinamico.SetActive(false);
                 coresDinamico.SetActive(false);
@@ -68,7 +72,8 @@ public class MenuFaseSelect : MonoBehaviour
             {
                 sonsAnimaisDinamico.SetActive(false);
                 coresDinamico.SetActive(false);
-                meninaDoLeite.SetActive(false);
+                LeopardoJaboti.SetActive(false);
+                VisitaDaVovo.SetActive(false);
 
                 animalEscrever.SetActive(true);
                 abjetosEscrever.SetActive(true);
@@ -80,7 +85,28 @@ public class MenuFaseSelect : MonoBehaviour
     }
     public void GoToScene(string Scena)
     {
-      audioController.changeMusic(audioController.musicFase1, Scena, true, slider);
+        if(Scena == "Historias1"){
+            BancoPlayerprefs.instance.GravarInformacoesInt(BancoPlayerprefs.HISTORIA_ATUAL, 0);
+            audioController.changeMusic(audioController.musicFase1, "Historias", true, slider);
+        } else if(Scena == "Historias2"){
+            BancoPlayerprefs.instance.GravarInformacoesInt(BancoPlayerprefs.HISTORIA_ATUAL, 1);
+            audioController.changeMusic(audioController.musicFase1, "Historias", true, slider);
+        } else if(Scena == "cores_dinamico"){
+            //grana a fase para ser usada na proxima fase
+            BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL, BancoPlayerprefs.ABRIR_CORES);
+            //grava A pagina para ser usada na procima fase, pagina1 1 ate 30
+            BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_PAGINA_ATUAL, BancoPlayerprefs.PAGINA_CORES);
+            audioController.changeMusic(audioController.musicFase1, BancoPlayerprefs.ABRIR_FASE_SELECT, true, slider);
+
+        } else if(Scena == "Fase_Sons"){
+            //grana a fase para ser usada na proxima fase
+            BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL, BancoPlayerprefs.ABRIR_SONS);
+            //grava A pagina para ser usada na procima fase, pagina1 1 ate 30
+            BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_PAGINA_ATUAL, BancoPlayerprefs.PAGINA_SONS);
+            audioController.changeMusic(audioController.musicFase1, BancoPlayerprefs.ABRIR_FASE_SELECT, true, slider);
+        } else {
+            audioController.changeMusic(audioController.musicFase1, Scena, true, slider);
+        }
     }
 
     IEnumerator LoadScreen(string scena)
@@ -145,18 +171,56 @@ public class MenuFaseSelect : MonoBehaviour
         }
         audioController.changeMusic(audioController.musicFase1, "Menu2", true, slider);
     }
-    public void setTipo(String fase)
+        //metodo duplicado com GoToScene
+        public void setTipo(String fase)
     {
 
         if (cat.Equals(CATEGORIA.LER))
         {
         //Debug.Log(cat);
-            audioController.changeMusic(audioController.musicFase1, "Ler"+fase, true, slider);
+            //audioController.changeMusic(audioController.musicFase1, "Ler"+fase, true, slider);
+            if("Ler"+fase == BancoPlayerprefs.ABRIR_LER_FRUTAS) {
+                //grana a fase para ser usada na proxima fase
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL, BancoPlayerprefs.ABRIR_LER_FRUTAS);
+                //grava A pagina para ser usada na procima fase, pagina1 1 ate 30
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_PAGINA_ATUAL, BancoPlayerprefs.PAGINA_LER_FRUTAS);
+                audioController.changeMusic(audioController.musicFase1, BancoPlayerprefs.ABRIR_FASE_SELECT, true, slider);
+            } else if("Ler"+fase == BancoPlayerprefs.ABRIR_LER_ANIMAIS) {
+                //grana a fase para ser usada na proxima fase
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL, BancoPlayerprefs.ABRIR_LER_ANIMAIS);
+                //grava A pagina para ser usada na procima fase, pagina1 1 ate 30
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_PAGINA_ATUAL, BancoPlayerprefs.PAGINA_LER_ANIMAIS);
+                audioController.changeMusic(audioController.musicFase1, BancoPlayerprefs.ABRIR_FASE_SELECT, true, slider);
+            } else if("Ler"+fase == BancoPlayerprefs.ABRIR_LER_OBJETOS) {
+                //grana a fase para ser usada na proxima fase
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL, BancoPlayerprefs.ABRIR_LER_OBJETOS);
+                //grava A pagina para ser usada na procima fase, pagina1 1 ate 30
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_PAGINA_ATUAL, BancoPlayerprefs.PAGINA_LER_OBJETOS);
+                audioController.changeMusic(audioController.musicFase1, BancoPlayerprefs.ABRIR_FASE_SELECT, true, slider);
+            }
         }
         if (cat.Equals(CATEGORIA.ESCREVER))
-        {
-        //Debug.Log(cat);
-            audioController.changeMusic(audioController.musicFase1, "Escrever" + fase, true, slider);
+        {   
+            if("Escrever"+fase == BancoPlayerprefs.ABRIR_ESCREVER_FRUTAS) {
+                //grana a fase para ser usada na proxima fase
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL, BancoPlayerprefs.ABRIR_ESCREVER_FRUTAS);
+                //grava A pagina para ser usada na procima fase, pagina1 1 ate 30
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_PAGINA_ATUAL, BancoPlayerprefs.PAGINA_ESCREVER_FRUTAS);
+                audioController.changeMusic(audioController.musicFase1, BancoPlayerprefs.ABRIR_FASE_SELECT, true, slider);
+            } else if("Escrever"+fase == BancoPlayerprefs.ABRIR_ESCREVER_ANIMAIS) {
+                //grana a fase para ser usada na proxima fase
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL, BancoPlayerprefs.ABRIR_ESCREVER_ANIMAIS);
+                //grava A pagina para ser usada na procima fase, pagina1 1 ate 30
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_PAGINA_ATUAL, BancoPlayerprefs.PAGINA_ESCREVER_ANIMAIS);
+                audioController.changeMusic(audioController.musicFase1, BancoPlayerprefs.ABRIR_FASE_SELECT, true, slider);
+            } else if("Escrever"+fase == BancoPlayerprefs.ABRIR_ESCREVER_OBJETOS) {
+                //grana a fase para ser usada na proxima fase
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL, BancoPlayerprefs.ABRIR_ESCREVER_OBJETOS);
+                //grava A pagina para ser usada na procima fase, pagina1 1 ate 30
+                BancoPlayerprefs.instance.GravarInformacoesString(BancoPlayerprefs.MENU_PAGINA_ATUAL, BancoPlayerprefs.PAGINA_ESCREVER_OBJETOS);
+                audioController.changeMusic(audioController.musicFase1, BancoPlayerprefs.ABRIR_FASE_SELECT, true, slider);
+            }
+            //audioController.changeMusic(audioController.musicFase1, "Escrever" + fase, true, slider);
         }
         if (cat.Equals(CATEGORIA.CRUZADINHA))
         {

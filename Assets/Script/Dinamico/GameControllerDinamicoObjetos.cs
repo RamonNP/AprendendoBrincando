@@ -67,7 +67,7 @@ public class GameControllerDinamicoObjetos : GameControllerBase
     private AudioController audioController;
     private IEnumerator coroutine;
     // Start is called before the first frame update
-    public static int faseAtual;
+    public int faseAtual;
     public int right;
     public int error;
     public int pontos;
@@ -76,11 +76,13 @@ public class GameControllerDinamicoObjetos : GameControllerBase
     private float x2;
     private float x3;
     public override int lockKK { get => lockKK; set => lockKK = value; }
+    public string menuFaseAtual;
     void Start()
     {
-        //Debug.Log("INICIO CARREGANDO");
-        //RequestInterstitial();
-        //Debug.Log("FIM CARREGANDO");
+        //Variavel que armazena o valor que esta a fase exemplo Ler_dinamico_Frutas
+        menuFaseAtual = BancoPlayerprefs.instance.LerInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL);;
+        //BancoPlayerprefs.instance.GravarInformacoesInt(menuPaginaAtual+1,1);
+        faseAtual = BancoPlayerprefs.instance.LerInformacoesInt(BancoPlayerprefs.FASE_ATUAL);
         posicaoAleatoria(new Random().Next(0, 3));
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
         audioController.fxFrase = audioItem[faseAtual];
@@ -114,9 +116,9 @@ public class GameControllerDinamicoObjetos : GameControllerBase
             x3 = 4;
         }
 
-        obj1.transform.position = new Vector2(x3, -2.45f);
-        obj2.transform.position = new Vector2(x2, -2.45f);
-        obj3.transform.position = new Vector2(x1, -2.45f);
+        obj1.transform.position = new Vector2(x3, -3.30f);
+        obj2.transform.position = new Vector2(x2, -3.30f);
+        obj3.transform.position = new Vector2(x1, -3.30f);
     }
     // Update is called once per frame
     void Update()
@@ -146,6 +148,10 @@ public class GameControllerDinamicoObjetos : GameControllerBase
         StartCoroutine("waith");
         //RewardedAdsScript.getInstance().RegraInterstitial();
         AdmobManager.instance.ShowInterstitial();
+        BancoPlayerprefs.instance.GravarInformacoesInt(BancoPlayerprefs.FASE_ATUAL,faseAtual);
+
+        //gravar  no banco para abrir no menu
+        BancoPlayerprefs.instance.GravarInformacoesInt(menuFaseAtual+faseAtual,1);
     }
     IEnumerator waith()
     {

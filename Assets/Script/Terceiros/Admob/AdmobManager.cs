@@ -76,7 +76,7 @@ public class AdmobManager : MonoBehaviour
         AdRequest request = new AdRequest.Builder().Build();
         // Load the banner with the request.
         bannerView.LoadAd(request);
-        Invoke("DestroyBanner", 10f);
+        Invoke("DestroyBanner", 20f);
     }
     void DestroyBanner()
     {
@@ -123,7 +123,7 @@ public class AdmobManager : MonoBehaviour
 
     public void ShowInterstitial() {
         qtdMorte++;
-        if (this.interstitial.IsLoaded() && qtdMorte >= 2) {
+        if (this.interstitial.IsLoaded() && qtdMorte >= 4) {
             qtdMorte = 0;
             this.interstitial.Show();
         }

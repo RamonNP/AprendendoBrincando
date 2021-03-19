@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class AudioControllerV2 : MonoBehaviour
 {
 
+    public string idioma = "pt";
     public AudioControllerV2 instance;
     public float tempoInciarPalavra;
     private void Awake()
@@ -13,7 +14,7 @@ public class AudioControllerV2 : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
         } else if (instance != this)
         {
             //Destroy(gameObject);
@@ -31,11 +32,24 @@ public class AudioControllerV2 : MonoBehaviour
     [Header("Music")]
 
     public AudioClip musicFase1;
+    public AudioClip musicMenu;
 
     [Header("Sound")]
 
-    public AudioClip fxClick;
-    public AudioClip fxPalavra;
+    public AudioClip fxCombo1;
+    public AudioClip fxCombo2;
+    public AudioClip fxCombo3;
+    public AudioClip fxCombo4;
+    public AudioClip fxCombo5;
+    public AudioClip fxCombo6;
+    public AudioClip fxCombo7;
+    public AudioClip fxVisualizaLetra1;
+    public AudioClip fxVisualizaLetra2;
+    public AudioClip fxVisualizaLetra3;
+    public AudioClip fxVisualizaLetra4;
+    public AudioClip fxVisualizaLetra5;
+    public AudioClip fxAcertouPalavra;
+    public AudioClip fxCompletouFase;
     public AudioClip fxError;
     public AudioClip fxVictory;
 
@@ -51,16 +65,13 @@ public class AudioControllerV2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //DontDestroyOnLoad(this.gameObject);
         maxVol = 1;
         minVol = 1;
-        
-
-        changeMusic(musicFase1, "Menu2", false, null);
-        //coroutine = playAudioEnum();
-        //StartCoroutine("playAudioEnum");
+        changeMusic(musicMenu, "Menu2", false, null);
     }
-
+    public void trocaCena(string nomeCena) {
+        changeMusic(musicFase1, nomeCena, true, null);
+    }
     public void changeMusic(AudioClip clip, string newScene, bool changeScene, Slider slider2)
     {
 
@@ -77,36 +88,21 @@ public class AudioControllerV2 : MonoBehaviour
         coroutine = changeMusicEnum();
         StartCoroutine("changeMusicEnum");
     }
-    /*
-    private IEnumerator changeMusicEnum()
+
+
+    IEnumerator changeMusicEnum()
     {
         for (float volume = maxVol; volume >= 0; volume -= 0.1f)
         {
             yield return new WaitForSecondsRealtime(0.1f);
             sMusic.volume = volume;
-        }
+        } 
         sMusic.volume = 0;
         sMusic.clip = newMusic;
         sMusic.Play();
 
-        for (float volume = 0; volume < maxVol; volume += 0.1f)
-        {
-            yield return new WaitForSecondsRealtime(0.1f);
-            sMusic.volume = volume;
-        }
-        sMusic.volume = maxVol;
         if (changeScene)
         {
-            SceneManager.LoadScene(newScene);
-        }
-    }*/
-
-
-    IEnumerator changeMusicEnum()
-    {
-        if (changeScene)
-        {
-
             //Debug.Log(async == null);
             if (async == null && slider != null)
             {
@@ -120,7 +116,7 @@ public class AudioControllerV2 : MonoBehaviour
                 {
                     Debug.Log("ERRRRRRRRRRROOOOOOOOOOO"+p.StackTrace);
                     slider.gameObject.SetActive(true);
-                    async = SceneManager.LoadSceneAsync("Menu2");
+                    async = SceneManager.LoadSceneAsync("Menu");
                     async.allowSceneActivation = false;
                     throw;
                 }
@@ -135,25 +131,18 @@ public class AudioControllerV2 : MonoBehaviour
                     }
                     yield return null;
                 }
-
             }
         }
-        /*
-        for (float volume = maxVol; volume >= 0; volume -= 0.1f)
-        {
-            yield return new WaitForSecondsRealtime(0.1f);
-            sMusic.volume = volume;
-        } */
-        sMusic.volume = 0;
-        sMusic.clip = newMusic;
-        sMusic.Play();
-
+        
         for (float volume = 0; volume < maxVol; volume += 0.1f)
         {
             yield return new WaitForSecondsRealtime(0.01f);
             sMusic.volume = volume;
         }
         sMusic.volume = maxVol;
+        
+       
+
         async = null;
     }
     public void playPalavra()
@@ -165,9 +154,8 @@ public class AudioControllerV2 : MonoBehaviour
 
     public void playFx(AudioClip fx, float volume)
     {
-        object[] parms = new object[2]{fx, volume};
-        StartCoroutine("playFxInumerator", parms);
-        //aumentar volume da musica
+        sFX.volume = volume;
+        sFX.PlayOneShot(fx);
         
     }
 
@@ -216,11 +204,9 @@ public class AudioControllerV2 : MonoBehaviour
         //playFx(fxFrase, 1);
     }
 
-    public void MenuFaseSelect()
+    public void Fase1()
     {
-        //RewardedAdsScript.getInstance().RegraInterstitial();
-        AdmobManager.instance.ShowInterstitial();
-        SceneManager.LoadScene("MenuPrincipal");
+        SceneManager.LoadScene("Fase1");
     }
 
 }
