@@ -77,8 +77,7 @@ public class GameControllerDinamicoObjetos : GameControllerBase
     private float x3;
     public override int lockKK { get => lockKK; set => lockKK = value; }
     public string menuFaseAtual;
-    void Start()
-    {
+    private void Awake() {
         //Variavel que armazena o valor que esta a fase exemplo Ler_dinamico_Frutas
         menuFaseAtual = BancoPlayerprefs.instance.LerInformacoesString(BancoPlayerprefs.MENU_FASE_ATUAL);;
         //BancoPlayerprefs.instance.GravarInformacoesInt(menuPaginaAtual+1,1);
@@ -94,6 +93,10 @@ public class GameControllerDinamicoObjetos : GameControllerBase
         //RewardedAdsScript.getInstance().ShowBanner();
         AdmobManager.instance.RequestBanner();
         atualizarPontos(false);
+        
+    }
+    void Start()
+    {
     }
     public void posicaoAleatoria(int posicaoAnimais)
     {
